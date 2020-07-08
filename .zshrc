@@ -17,6 +17,8 @@ export MAILCHECK=0
 export EDITOR=vi
 eval "$(direnv hook zsh)"
 
+export PATH="$HOME/bin:$PATH"
+
 if [ -d $HOME/.anyenv ] ; then
   export PATH="$HOME/.anyenv/bin:$PATH"
   eval "$(anyenv init -)"
@@ -28,4 +30,14 @@ export PATH="/usr/local/opt/gettext/bin:$PATH"
 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
+
+export PATH="/usr/local/opt/libressl/bin:$PATH"
+export PATH="/usr/local/opt/openssl/bin:$PATH"
+
+export ANDROID_HOME="/Users/sassy/Library/Android/sdk"
+export ANDROID_SDK_ROOT="/Users/sassy/Library/Android/sdk"
+export ANDROID_AVD_HOME="/Users/sassy/.android/avd"
+
+eval "$(rbenv init -)"
+export PATH="/usr/local/opt/openjdk/bin:$PATH"
 

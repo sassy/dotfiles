@@ -39,5 +39,6 @@ export ANDROID_SDK_ROOT="/Users/sassy/Library/Android/sdk"
 export ANDROID_AVD_HOME="/Users/sassy/.android/avd"
 
 eval "$(rbenv init -)"
+eval "$(nodenv init -)"
 export PATH="/usr/local/opt/openjdk/bin:$PATH"
 

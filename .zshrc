@@ -34,10 +34,20 @@ export LANG=en_US.UTF-8
 export PATH="/usr/local/opt/libressl/bin:$PATH"
 export PATH="/usr/local/opt/openssl/bin:$PATH"
 
-export ANDROID_HOME="/Users/sassy/Library/Android/sdk"
-export ANDROID_SDK_ROOT="/Users/sassy/Library/Android/sdk"
-export ANDROID_AVD_HOME="/Users/sassy/.android/avd"
+# for Android
+export ANDROID_HOME="$HOME/Library/Android/sdk"
+export ANDROID_SDK_ROOT="$HOME/Library/Android/sdk"
+export ANDROID_AVD_HOME="$HOME/.android/avd"
+export PATH="$HOME/Library/Android/sdk/platform-tools:$PATH"
 
 eval "$(rbenv init -)"
 export PATH="/usr/local/opt/openjdk/bin:$PATH"
+
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="/usr/local/sbin:$PATH"
+
+# Added by serverless binary installer
+export PATH="$HOME/.serverless/bin:$PATH"
+
 

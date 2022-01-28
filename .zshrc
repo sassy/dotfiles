@@ -41,6 +41,7 @@ export ANDROID_AVD_HOME="$HOME/.android/avd"
 export PATH="$HOME/Library/Android/sdk/platform-tools:$PATH"
 
 eval "$(rbenv init -)"
+eval "$(nodenv init -)"
 export PATH="/usr/local/opt/openjdk/bin:$PATH"
 
 

@@ -42,14 +42,23 @@ export ANDROID_AVD_HOME="$HOME/.android/avd"
 export PATH="$HOME/Library/Android/sdk/platform-tools:$PATH"
 
 eval "$(rbenv init -)"
-eval "$(nodenv init -)"
 export PATH="/usr/local/opt/openjdk/bin:$PATH"
 
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 
-# Added by serverless binary installer
-export PATH="$HOME/.serverless/bin:$PATH"
+export PATH="$HOME/.pub-cache/bin:$PATH"
 
 
+
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
+
+
+# Load Angular CLI autocompletion.
+# source <(ng completion script)
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/satoshi_watanabe/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)

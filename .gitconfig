@@ -2,7 +2,7 @@
 	name = Satoshi Watanabe
 	email = sassy.watanabe@gmail.com
 [core]
-	excludesfile = /Users/satoshi_watanabe/.gitignore_global
+	excludesfile = /Users/${USER}/.gitignore_global
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
@@ -11,3 +11,5 @@
 	trustExitCode = true
 [init]
 	defaultBranch = main
+[ghq]
+	root = ~/dev

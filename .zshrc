@@ -3,6 +3,8 @@ HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
 setopt hist_ignore_dups
+setopt share_history
+setopt inc_append_history
 bindkey -e
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
@@ -12,6 +14,9 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
+setopt no_beep
+setopt nolistbeep
+
 PROMPT='[%n %d]$ '
 export MAILCHECK=0
 
@@ -20,28 +25,19 @@ eval "$(direnv hook zsh)"
 
 export PATH="$HOME/bin:$PATH"
 
+# homebrew
+export PATH="$PATH:/opt/homebrew/bin"
+
 if [ -d $HOME/.anyenv ] ; then
   export PATH="$HOME/.anyenv/bin:$PATH"
   eval "$(anyenv init -)"
 fi
-
-# OPAM configuration
-. /Users/sassy/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
-export PATH="/usr/local/opt/gettext/bin:$PATH"
 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 export PATH="/usr/local/opt/libressl/bin:$PATH"
 export PATH="/usr/local/opt/openssl/bin:$PATH"
-
-# for Android
-export ANDROID_HOME="$HOME/Library/Android/sdk"
-export ANDROID_SDK_ROOT="$HOME/Library/Android/sdk"
-export ANDROID_AVD_HOME="$HOME/.android/avd"
-export PATH="$HOME/Library/Android/sdk/platform-tools:$PATH"
-
-eval "$(rbenv init -)"
 export PATH="/usr/local/opt/openjdk/bin:$PATH"
 
 
@@ -50,15 +46,33 @@ export PATH="/usr/local/sbin:$PATH"
 
 export PATH="$HOME/.pub-cache/bin:$PATH"
 
-
-
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-# Load Angular CLI autocompletion.
-# source <(ng completion script)
+eval "$(sheldon source)"
 
-### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-export PATH="/Users/satoshi_watanabe/.rd/bin:$PATH"
-### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+## peco settings
+function peco-select-history() {
+  BUFFER=$(\history -n -r 1| peco --query "$LBUFFER")
+  CURSOR=${#BUFFER}
+  zle clear-screen
+}
+zle -N peco-select-history
+bindkey '^R' peco-select-history
+
+function peco-src() {
+  local selected_dir=$(ghq list -p | peco --prompt="repositories >" --query "$LBUFFER")
+  if [ -n "$selected_dir" ]; then
+    BUFFER="cd ${selected_dir}"
+    zle accept-line
+  fi
+  zle clear-screen
+}
+zle -N peco-src
+bindkey '^]' peco-src
+export PATH="$PATH:/opt/homebrew/bin"
+alias ls="eza"
+alias cat="bat"
+alias find="fd"

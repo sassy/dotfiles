@@ -20,13 +20,13 @@ setopt nolistbeep
 PROMPT='[%n %d]$ '
 export MAILCHECK=0
 
-export EDITOR=vi
-eval "$(direnv hook zsh)"
-
 export PATH="$HOME/bin:$PATH"
 
 # homebrew
 export PATH="$PATH:/opt/homebrew/bin"
+
+export EDITOR=vi
+eval "$(direnv hook zsh)"
 
 if [ -d $HOME/.anyenv ] ; then
   export PATH="$HOME/.anyenv/bin:$PATH"

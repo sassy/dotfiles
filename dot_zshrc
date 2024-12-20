@@ -25,7 +25,12 @@ export PATH="$HOME/bin:$PATH"
 # homebrew
 export PATH="$PATH:/opt/homebrew/bin"
 
-export EDITOR=vi
+if type code &>/dev/null; then
+  export EDITOR="code --wait"
+else
+  export EDITOR=vi
+fi
+
 eval "$(direnv hook zsh)"
 
 if [ -d $HOME/.anyenv ] ; then
@@ -72,6 +77,11 @@ function peco-src() {
 }
 zle -N peco-src
 bindkey '^]' peco-src
+
+function cdgh() {
+  cd $(ghq list -p | peco)
+}
+
 export PATH="$PATH:/opt/homebrew/bin"
 alias ls="eza"
 alias cat="bat"

@@ -85,8 +85,13 @@ function peco-src() {
 zle -N peco-src
 bindkey '^]' peco-src
 
+# utility
 function cdgh() {
   cd $(ghq list -p | peco)
+}
+
+function gitpcb() {
+  git push -u origin $(git branch --contains | cut  -d " " -f 2)
 }
 
 export PATH="$PATH:/opt/homebrew/bin"

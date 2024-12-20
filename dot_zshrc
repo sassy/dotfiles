@@ -65,6 +65,9 @@ if type sheldon &>/dev/null; then
   eval "$(sheldon source)"
 fi
 
+## zsh-completions-setting
+bindkey '^j' autosuggest-accept
+
 ## peco settings
 function peco-select-history() {
   BUFFER=$(\history -n -r 1| peco --query "$LBUFFER")

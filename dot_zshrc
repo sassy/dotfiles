@@ -101,3 +101,8 @@ export PATH="$PATH:/opt/homebrew/bin"
 alias ls="eza"
 alias cat="bat"
 alias find="fd"
+
+if type zoxide &>/dev/null; then
+  eval "$(zoxide init zsh)"
+fi
+

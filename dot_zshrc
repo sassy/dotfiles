@@ -106,3 +106,6 @@ if type zoxide &>/dev/null; then
   eval "$(zoxide init zsh)"
 fi
 
+if [ -d $HOME/.local/bin ] ; then
+  export PATH="$HOME/.local/bin:$PATH"
+fi
